@@ -2,7 +2,7 @@ import { Variants } from "framer-motion";
 
 export const blockUp: Variants = {
   offscreen: {
-    y: 200,
+    y: 150,
     opacity: 0,
   },
   onscreen: {

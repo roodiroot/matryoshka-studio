@@ -10,7 +10,7 @@ const TehnologyBlock = () => {
       <motion.div
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
         className='max-w-2xl'
       >
         <motion.div variants={blockUp}>

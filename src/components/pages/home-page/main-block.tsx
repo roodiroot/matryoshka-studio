@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 
-import ClassicContainer from "@/components/classic-container";
 import { blockUp } from "@/transition-variants";
+import ClassicContainer from "@/components/classic-container";
 
 const MainBlock = () => {
   return (
@@ -11,7 +11,7 @@ const MainBlock = () => {
       <motion.div
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <motion.div variants={blockUp} className='max-w-3xl'>
           <h1 className='font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl'>

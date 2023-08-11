@@ -34,11 +34,7 @@ const SliderMenu = () => {
           <div className='mx-auto max-w-7xl px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl lg:max-w-none'>
               <div className='grid grid-cols-1 sm:grid-cols-2'>
-                <LinkMenu
-                  href='/services'
-                  label='Наши услуги'
-                  onClick={onClose}
-                />
+                <LinkMenu href='/work' label='Наши работы' onClick={onClose} />
                 <LinkMenu href='/about' label='О нас' onClick={onClose} />
               </div>
             </div>

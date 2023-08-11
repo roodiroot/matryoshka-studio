@@ -3,19 +3,23 @@
 import { motion } from "framer-motion";
 
 import { blockUp } from "@/transition-variants";
+import BlackContainer from "@/components/black-container";
+import InteriorContainer from "@/components/interior-container";
 
 const ServicesBlock = () => {
   return (
-    <div className='mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56'>
-      <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+    <BlackContainer className='mt-24 sm:mt-32'>
+      <InteriorContainer>
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <motion.div
             initial='offscreen'
             whileInView='onscreen'
-            viewport={{ once: true, amount: 0.8 }}
-            className='flex items-center gap-x-8'
+            viewport={{ once: true, amount: 0.2 }}
           >
-            <motion.div variants={blockUp}>
+            <motion.div
+              variants={blockUp}
+              className='flex items-center gap-x-8'
+            >
               <h2 className='text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left'>
                 Мы можем решить любые задачи связанные с развитием бизнеса в
                 сети
@@ -26,7 +30,7 @@ const ServicesBlock = () => {
           <motion.div
             initial='offscreen'
             whileInView='onscreen'
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <ul className='mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4'>
               <li>
@@ -56,8 +60,8 @@ const ServicesBlock = () => {
             </ul>
           </motion.div>
         </div>
-      </div>
-    </div>
+      </InteriorContainer>
+    </BlackContainer>
   );
 };
 

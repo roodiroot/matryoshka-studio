@@ -13,7 +13,13 @@ export default function Home() {
       <ServicesBlock />
       <TehnologyBlock />
       <TechnologyList />
-      <ReviewsBlock />
+      <ReviewsBlock
+        autor='Компания'
+        text='Команда Матрёшки сделала все возможное с нашей адаптацией,
+                  даже найдя способ получить доступ к микрофону пользователя, не
+                  вызывая одного из этих надоедливых диалоговых окон с
+                  разрешениями.'
+      />
       <ServiceBlock />
       <FeedbackformBlock />
     </>

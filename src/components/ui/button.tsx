@@ -5,8 +5,9 @@ interface ButtonProps {
   type: string;
   to: string;
   onClick?: () => void;
+  className?: string;
 }
-const Button: React.FC<ButtonProps> = ({ label, type, to }) => {
+const Button: React.FC<ButtonProps> = ({ label, type, to, className = "" }) => {
   return (
     <Link
       href={to}
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({ label, type, to }) => {
       inline-flex rounded-full px-4 py-1.5 text-sm font-semibold transition
       ${type === "dark" && "bg-neutral-950 text-white hover:bg-neutral-800"}
       ${type === "white" && "bg-white text-neutral-950 hover:bg-neutral-200"}
+      ${className}
       `}
     >
       <span className='relative top-px'>{label}</span>

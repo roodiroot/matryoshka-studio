@@ -1,9 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import { blockUp } from "@/transition-variants";
 
-const ReviewsBlock = () => {
+interface ReviewsBlockProps {
+  text: string;
+  autor: string;
+}
+
+const ReviewsBlock: React.FC<ReviewsBlockProps> = ({ text, autor }) => {
   return (
     <div className='relative isolate bg-neutral-50 py-16 sm:py-28 md:py-32 mt-24 sm:mt-32 lg:mt-40'>
       <svg
@@ -60,20 +66,17 @@ const ReviewsBlock = () => {
         <motion.div
           initial='offscreen'
           whileInView='onscreen'
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
           className='mx-auto max-w-2xl lg:max-w-none'
         >
           <motion.div variants={blockUp}>
             <figure className='mx-auto max-w-4xl'>
               <blockquote className='relative font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl'>
                 <p className="before:content-['“'] after:content-['”'] sm:before:absolute sm:before:right-full">
-                  Команда Матрёшки сделала все возможное с нашей адаптацией,
-                  даже найдя способ получить доступ к микрофону пользователя, не
-                  вызывая одного из этих надоедливых диалоговых окон с
-                  разрешениями.
+                  {text}
                 </p>
               </blockquote>
-              <figcaption className='mt-10'>Компания </figcaption>
+              <figcaption className='mt-10'>{autor}</figcaption>
             </figure>
           </motion.div>
         </motion.div>
