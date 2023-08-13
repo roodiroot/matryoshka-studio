@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import { motion, useScroll, useSpring, useInView } from "framer-motion";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 interface PhotoElementProps {
   img?: string;
@@ -10,8 +9,8 @@ interface PhotoElementProps {
 }
 
 const PhotoElement: React.FC<PhotoElementProps> = ({
-  img = "https://studio.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmagnifying-glass.5cedfad8.jpg&w=750&q=75",
-  className = "",
+  img = 'https://studio.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmagnifying-glass.5cedfad8.jpg&w=750&q=75',
+  className = '',
 }) => {
   const [b, setB] = useState(1);
   const ref = useRef(null);
@@ -28,47 +27,44 @@ const PhotoElement: React.FC<PhotoElementProps> = ({
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", skrolGrayScale);
+    window.addEventListener('scroll', skrolGrayScale);
     return () => {
-      window.removeEventListener("scroll", skrolGrayScale);
+      window.removeEventListener('scroll', skrolGrayScale);
     };
   }, []);
 
   return (
-    <div
-      className={`group isolate overflow-hidden rounded-4xl bg-neutral-100 ${className}`}
-    >
-      <div ref={ref} className='group relative'>
+    <div className={`group isolate overflow-hidden rounded-4xl bg-neutral-100 ${className}`}>
+      <div ref={ref} className="group relative">
         <Image
-          alt=''
-          loading='lazy'
-          width='2400'
-          height='3520'
-          decoding='async'
-          data-nimg='1'
-          className='aspect-[16/10] w-full object-cover'
-          sizes='(min-width: 768px) 42rem, 100vw'
+          alt=""
+          loading="lazy"
+          width="2400"
+          height="3520"
+          decoding="async"
+          data-nimg="1"
+          className="aspect-[16/10] w-full object-cover"
+          sizes="(min-width: 768px) 42rem, 100vw"
           src={img}
           style={{
-            color: "transparent",
+            color: 'transparent',
             filter: `grayscale(${b})`,
           }}
         />
         <div
-          className='pointer-events-none absolute left-0 top-0 w-full opacity-0 transition duration-300 group-hover:opacity-100'
-          aria-hidden='true'
-        >
+          className="pointer-events-none absolute left-0 top-0 w-full opacity-0 transition duration-300 group-hover:opacity-100"
+          aria-hidden="true">
           <img
-            alt=''
-            loading='lazy'
-            width='2400'
-            height='1600'
-            decoding='async'
-            data-nimg='1'
-            className='aspect-[16/10] w-full object-cover'
-            sizes='(min-width: 768px) 42rem, 100vw'
+            alt=""
+            loading="lazy"
+            width="2400"
+            height="1600"
+            decoding="async"
+            data-nimg="1"
+            className="aspect-[16/10] w-full object-cover"
+            sizes="(min-width: 768px) 42rem, 100vw"
             src={img}
-            style={{ color: "transparent" }}
+            style={{ color: 'transparent' }}
           />
         </div>
       </div>
