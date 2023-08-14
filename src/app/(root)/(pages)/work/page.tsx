@@ -1,25 +1,28 @@
-'use client';
+"use client";
 
-import FeedbackformBlock from '@/components/pages/home-page/feedbackform-block';
-import ReviewsBlock from '@/components/pages/home-page/reviews-block';
-import PartnersBlock from '@/components/pages/work/partners-block';
-import PortfolioBlock from '@/components/pages/work/portfolio-block';
-import MainHeaderPage from '@/components/ui/main-header-page';
+import FeedbackformBlock from "@/components/pages/home-page/feedbackform-block";
+import ReviewsBlock from "@/components/pages/home-page/reviews-block";
+import PartnersBlock from "@/components/pages/work/partners-block";
+import PortfolioBlock from "@/components/pages/work/portfolio-block";
+import MainHeaderPage from "@/components/ui/main-header-page";
 
 const Page = () => {
   return (
     <>
-      <MainHeaderPage overhead="Наши работы" head="Проверенные решения реальных проблем.">
+      <MainHeaderPage
+        overhead='Наши работы'
+        head='Окно в Мир Ваших возможностей'
+      >
         <p>
-          Мы верим в эффективность и максимальное использование наших ресурсов, чтобы обеспечить
-          наилучшую ценность для наших клиентов. Основной способ сделать это — повторно использовать
-          те же пять проектов, которые мы разрабатывали в течение последнего десятилетия.
+          Мы&nbsp;черпаем вдохновение в&nbsp;богатом культурном наследии,
+          объединяя традиции и&nbsp;инновации, чтобы создать веб-решения,
+          которые говорят сами за&nbsp;себя.
         </p>
       </MainHeaderPage>
       <PortfolioBlock />
       <ReviewsBlock
-        autor="Новая компания"
-        text="Мы обратились в Матрёшку, потому что нам нравились их прошлые работы. Они доставили что-то удивительно похожее в рекордно короткие сроки."
+        autor='© Health & beauty, 2020'
+        text='Они не просто создают сайты — они дарят уникальные веб-решения, воплощая в них глубину культуры и профессионализм.'
       />
       <PartnersBlock />
       <FeedbackformBlock />

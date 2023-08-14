@@ -9,10 +9,25 @@ import Button from "@/components/ui/button";
 
 interface PortfolioItemProps {
   name: string;
+  year: string;
+  teme: string;
   title: string;
+  description: string;
+  company: string;
+  feedback: { name: string; job_title: string; img: string; text: string };
+  stack: string[];
 }
 
-const PortfolioItem: React.FC<PortfolioItemProps> = ({ name, title }) => {
+const PortfolioItem: React.FC<PortfolioItemProps> = ({
+  name,
+  year,
+  teme,
+  title,
+  description,
+  stack,
+  feedback,
+  company,
+}) => {
   return (
     <motion.div
       initial='offscreen'
@@ -35,15 +50,17 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ name, title }) => {
                 src='https://studio.tailwindui.com/_next/static/media/logomark-dark.4d2947be.svg'
               />
               <h3 className='mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8'>
-                FamilyFund
+                {company}
               </h3>
             </div>
             <div className='mt-1 flex gap-x-4 sm:mt-0 lg:block'>
-              <p className="text-sm tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
-                Web development, CMS
+              <p className="line-clamp-1 text-sm tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
+                {stack?.slice(0, 2).map((i) => (
+                  <span>{i}, </span>
+                ))}
               </p>
               <p className='text-sm text-neutral-950 lg:mt-2'>
-                <time dateTime='2023-01'>January 2023</time>
+                <time dateTime='2023-01'>{year}</time>
               </p>
             </div>
           </div>
@@ -53,14 +70,15 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ name, title }) => {
             </p>
             <div className='mt-6 space-y-6 text-base text-neutral-600'>
               <p>
-                FamilyFund is a crowdfunding platform for friends and family.
-                Allowing users to take personal loans from their network without
-                a traditional financial institution.
+                {teme}
+                <span>. </span>
+                {description}
               </p>
               <p>
-                We developed a custom CMS to power their blog with and optimised
-                their site to rank higher for the keywords “Gary Vee” and “Tony
-                Robbins”.
+                Что было сделано:{" "}
+                {stack?.slice(0, 2).map((i) => (
+                  <span>{i}, </span>
+                ))}
               </p>
             </div>
             <div className='mt-8 flex'>
@@ -69,15 +87,10 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ name, title }) => {
             <div className='pl-8 mt-12 relative before:absolute after:absolute before:bg-neutral-950 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px'>
               <figure className='text-sm'>
                 <blockquote className="text-neutral-600 [&>*]:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
-                  <p>
-                    Working with Studio, we felt more like a partner than a
-                    customer. They really resonated with our mission to change
-                    the way people convince their parents to cash out their
-                    pensions.
-                  </p>
+                  <p>{feedback?.text}</p>
                 </blockquote>
                 <figcaption className='mt-6 font-semibold text-neutral-950'>
-                  Debra Fiscal, CEO of FamilyFund
+                  {feedback?.name}, {feedback?.job_title}
                 </figcaption>
               </figure>
             </div>

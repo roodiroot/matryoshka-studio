@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { blockUp } from "@/transition-variants";
 import ClassicContainer from "@/components/classic-container";
-import PartnersItem from "./ui/partners-item";
+import PartnersItem from "./components/partners-item";
 
 const partnersList = [
   {

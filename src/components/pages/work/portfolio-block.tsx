@@ -7,7 +7,8 @@ import ClassicContainer from "@/components/classic-container";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/ui/button";
-import PortfolioItem from "./ui/portfolio-item";
+import PortfolioItem from "./components/portfolio-item";
+import { useWorkStore } from "@/hooks/work-store";
 
 const portfolioList = [
   {
@@ -20,6 +21,7 @@ const portfolioList = [
 ];
 
 const PortfolioBlock = () => {
+  const { projects } = useWorkStore();
   return (
     <ClassicContainer className='mt-40'>
       <div className='mx-auto max-w-2xl lg:max-w-none'>
@@ -36,8 +38,18 @@ const PortfolioBlock = () => {
           </motion.h2>
         </motion.div>
         <div className='mt-10 space-y-20 sm:space-y-24 lg:space-y-32'>
-          {portfolioList?.map((i) => (
-            <PortfolioItem key={i.id} title={i.title} name={i.name} />
+          {projects?.map((i) => (
+            <PortfolioItem
+              key={i.name}
+              title={i.title}
+              description={i.description}
+              teme={i.teme}
+              name={i.name}
+              year={i?.info?.filter((d) => d.title === "Дата")[0]?.name}
+              company={i?.info?.filter((d) => d.title === "Клиент")[0]?.name}
+              stack={i.stack}
+              feedback={i?.feedback}
+            />
           ))}
         </div>
       </div>
