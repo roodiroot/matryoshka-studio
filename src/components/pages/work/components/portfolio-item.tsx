@@ -56,7 +56,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
             <div className='mt-1 flex gap-x-4 sm:mt-0 lg:block'>
               <p className="line-clamp-1 text-sm tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
                 {stack?.slice(0, 2).map((i) => (
-                  <span>{i}, </span>
+                  <span key={i}>{i}, </span>
                 ))}
               </p>
               <p className='text-sm text-neutral-950 lg:mt-2'>
@@ -77,7 +77,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
               <p>
                 Что было сделано:{" "}
                 {stack?.slice(0, 2).map((i) => (
-                  <span>{i}, </span>
+                  <span key={i}>{i}, </span>
                 ))}
               </p>
             </div>

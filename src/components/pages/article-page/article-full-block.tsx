@@ -9,8 +9,12 @@ const FullArticleBlock = () => {
   const { article } = useBlogStore();
   return (
     <ClassicContainer teg='article' className='mt-24 sm:mt-32 lg:mt-40'>
-      <ArticleHead />
-      <ArticleTextWrapper article={article} />
+      <ArticleHead
+        title={article?.title}
+        date={article?.date}
+        autor={article?.autor}
+      />
+      <ArticleTextWrapper article={article?.text} />
     </ClassicContainer>
   );
 };

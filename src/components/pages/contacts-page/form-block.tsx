@@ -6,7 +6,7 @@ import { blockUp } from "@/transition-variants";
 import ClassicContainer from "@/components/classic-container";
 import Form from "./components/form";
 
-const socialIcons = [
+export const socialIcons = [
   {
     label: "Facebook",
     href: "https://facebook.com",
@@ -136,7 +136,7 @@ const FormBlock = () => {
             </div>
             <div className='mt-16 pt-16 relative before:absolute after:absolute before:bg-neutral-950 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-px before:w-6 after:left-8 after:right-0 after:top-0 after:h-px'>
               <h2 className='font-display text-base font-semibold text-neutral-950'>
-                Подписывайтесь на нас
+                Можете найти нас тут
               </h2>
               <ul className='flex gap-x-10 text-neutral-950 mt-6'>
                 {socialIcons?.map((i) => (

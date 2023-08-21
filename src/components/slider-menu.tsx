@@ -5,6 +5,7 @@ import Logo from "@/components/ui/logo";
 import Burger from "@/components/ui/burger";
 import Button from "./ui/button";
 import LinkMenu from "./link-menu";
+import { socialIcons } from "./pages/contacts-page/form-block";
 
 const SliderMenu = () => {
   const { onClose } = useSliderMenu();
@@ -61,8 +62,46 @@ const SliderMenu = () => {
             <div className='grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16'>
               <div>
                 <h2 className='font-display text-base font-semibold text-white'>
-                  Our offices
+                  Контакты для связи
                 </h2>
+                <ul className='mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2'>
+                  <li>
+                    <div className='text-sm not-italic text-neutral-300'>
+                      <strong className='text-white'>Телефоны</strong>
+                      <br />
+                      <a href='tel:899999999'>+7 (495) 240-04-40</a>
+                      <br />
+                      <a href='tel:899999999'>+7 (987) 010-04-40</a>
+                    </div>
+                  </li>
+                  <li>
+                    <div className='text-sm not-italic text-neutral-300'>
+                      <strong className='text-white'>Почты</strong>
+                      <br />
+                      <a href='mailto:example@mail.ru'>example@mail.ru</a>
+                      <br />
+                      <a href='mailto:example@mail.ru'>example@mail.ru</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div className='sm:border-l sm:border-transparent sm:pl-16'>
+                <h2 className='font-display text-base font-semibold text-white'>
+                  Мы в соцсетях
+                </h2>
+                <ul className='flex gap-x-10 text-white mt-6'>
+                  {socialIcons?.map((i) => (
+                    <li key={i.label}>
+                      <a
+                        aria-label={i.label}
+                        className='transition hover:text-neutral-200'
+                        href={i.href}
+                      >
+                        {i.Icon}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

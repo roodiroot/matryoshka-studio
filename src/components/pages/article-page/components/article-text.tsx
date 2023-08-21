@@ -7,7 +7,7 @@ interface ArticleTextProps {
 
 const ArticleText: React.FC<ArticleTextProps> = ({ article }) => {
   return (
-    <div className='typography '>
+    <div className='typography'>
       {article &&
         article?.map((i: any) => (
           <div

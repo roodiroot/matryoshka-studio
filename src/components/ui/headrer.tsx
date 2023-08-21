@@ -42,9 +42,9 @@ const Headrer = () => {
               as={Fragment}
               enter='ease-out duration-300'
               enterFrom='opacity-0 h-px'
-              enterTo='opacity-100 h-[812px] sm:h-[750px]  lg:h-[666px]'
+              enterTo='opacity-100 h-[1160px] sm:h-[842px]  lg:h-[770px]'
               leave='ease-in duration-200'
-              leaveFrom='opacity-100 h-[812px] sm:h-[750px] lg:h-[666px]'
+              leaveFrom='opacity-100 h-[1160px] sm:h-[842px] lg:h-[770px]'
               leaveTo='opacity-0  h-px'
             >
               <Menu.Items>
