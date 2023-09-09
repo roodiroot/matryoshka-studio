@@ -21,8 +21,13 @@ const ArticleText: React.FC<ArticleTextProps> = ({ article }) => {
               }
               if (j.trim().slice(0, 4) === "-img") {
                 const img = j.trim().slice(4);
-                console.log(img);
-                return <PhotoElement key={j} className='my-10  max-sm:-mx-6' />;
+                return (
+                  <PhotoElement
+                    key={j}
+                    img={process.env.NEXT_PUBLIC_API_URL + img.slice(1)}
+                    className='my-10  max-sm:-mx-6'
+                  />
+                );
               }
               return <p key={j}>{j.trim()}</p>;
             })}

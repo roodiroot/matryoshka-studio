@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 import { blockUp } from "@/transition-variants";
 import ImgProject from "./img-project";
 import InfoProject from "./info-project";
-import GrayScaleImgWrapper from "@/components/gray-scale-img-wrapper";
 
 interface MediaBlockProjectProps {
-  info_arr: { title: string; name: string }[];
+  info_arr: { title: string; description: string }[];
   img: string;
 }
 
@@ -39,7 +38,7 @@ const MediaBlockProject: React.FC<MediaBlockProjectProps> = ({
         className='border-y border-neutral-200 bg-neutral-100'
       >
         <div className='-my-px mx-auto max-w-[76rem] bg-neutral-200'>
-          <ImgProject img={img} />
+          <ImgProject img={process.env.NEXT_PUBLIC_API_URL + img} />
         </div>
       </motion.div>
     </motion.div>

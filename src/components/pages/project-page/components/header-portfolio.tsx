@@ -7,7 +7,7 @@ import { blockUp } from "@/transition-variants";
 interface HeaderPortfolioProps {
   overTitle: string;
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 const HeaderPortfolio: React.FC<HeaderPortfolioProps> = ({
   overTitle,

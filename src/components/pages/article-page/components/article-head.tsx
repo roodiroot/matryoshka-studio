@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 import { blockUp } from "@/transition-variants";
+import { formateDate } from "@/utils";
 
 interface ArticleHeadProps {
   title: string;
@@ -11,6 +12,7 @@ interface ArticleHeadProps {
 }
 
 const ArticleHead: React.FC<ArticleHeadProps> = ({ title, date, autor }) => {
+  date = formateDate(date);
   return (
     <motion.div
       initial='offscreen'
@@ -31,7 +33,7 @@ const ArticleHead: React.FC<ArticleHeadProps> = ({ title, date, autor }) => {
           {date}
         </time>
         <p className='mt-6 text-sm font-semibold text-neutral-950'>
-          {autor.name}, {autor.jobTitle}
+          {autor?.name}, {autor?.jobTitle}
         </p>
       </motion.header>
     </motion.div>

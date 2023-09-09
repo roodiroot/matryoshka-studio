@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import { blockUp } from "@/transition-variants";
 import Link from "next/link";
+import { formateDate } from "@/utils";
 
 interface NextBlogProps {
   title: string;
@@ -12,6 +13,9 @@ interface NextBlogProps {
 }
 
 const NextBlog: React.FC<NextBlogProps> = ({ title, date, description }) => {
+  if (date?.length > 16) {
+    date = formateDate(date, true);
+  }
   return (
     <motion.div
       initial='offscreen'

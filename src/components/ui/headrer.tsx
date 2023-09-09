@@ -1,15 +1,17 @@
 "use client";
 import { Fragment } from "react";
+import { PiPhoneCallBold } from "react-icons/pi";
 import { Menu, Transition } from "@headlessui/react";
 
 import { useSliderMenu } from "@/hooks/slider-menu-store";
 import SliderMenu from "@/components/slider-menu";
-import Logo from "@/components/ui/logo";
+import LogoM from "@/components/ui/logoM";
 import Burger from "@/components/ui/burger";
 import Button from "./button";
 
 const Headrer = () => {
   const { isOpen, onOpen } = useSliderMenu();
+
   return (
     <header>
       <div
@@ -19,9 +21,20 @@ const Headrer = () => {
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <div className='mx-auto max-w-2xl lg:max-w-none'>
             <div className='flex items-center justify-between'>
-              <Logo black fill='fill-neutral-950' />
+              <LogoM black />
               <div className='flex items-center gap-x-8'>
-                <Button to='/contacts' label='Связаться с нами' type='dark' />
+                <Button
+                  className='hidden sm:block'
+                  to='/contacts'
+                  label='Связаться с нами'
+                  type='dark'
+                />
+                <Button
+                  className=' sm:hidden'
+                  to='/contacts'
+                  label='Связь'
+                  type='dark'
+                ></Button>
                 <Burger onClick={onOpen} className='w-6 h-6' />
               </div>
             </div>

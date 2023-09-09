@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import Logo from "./logo";
+import LogoM from "./logoM";
 import { blockUp } from "@/transition-variants";
 
 const Footer = () => {
@@ -176,7 +176,7 @@ const Footer = () => {
             </div>
           </div>
           <div className='mb-20 mt-24 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12'>
-            <Logo black fill='fill-neutral-950' />
+            <LogoM black className='w-52 sm:w-80 lg:w-[46rem]' />
             <p className='text-sm text-neutral-700'>© Matryoshka Inc., 2023</p>
           </div>
         </motion.div>

@@ -15,28 +15,30 @@ const ArticleTextWrapper: React.FC<ArticleTextWrapperProps> = ({ article }) => {
 
   useEffect(() => {
     const artic: any = [];
-    for (let i = 0; i < article.split("#title").slice(1).length; i++) {
-      artic.push({
-        title: article.split("#title").slice(1)[i].split("#p")[0],
-        p: [],
-      });
-      for (
-        let j = 0;
-        j <
-        article
-          .split("#title")
-          .slice(1)
-          [i].split(/\#p|#i|#t/)
-          .slice(1).length;
-        j++
-      ) {
-        artic[i].p.push(
+    if (article) {
+      for (let i = 0; i < article.split("#title").slice(1).length; i++) {
+        artic.push({
+          title: article.split("#title").slice(1)[i].split("#p")[0],
+          p: [],
+        });
+        for (
+          let j = 0;
+          j <
           article
             .split("#title")
             .slice(1)
             [i].split(/\#p|#i|#t/)
-            .slice(1)[j]
-        );
+            .slice(1).length;
+          j++
+        ) {
+          artic[i].p.push(
+            article
+              .split("#title")
+              .slice(1)
+              [i].split(/\#p|#i|#t/)
+              .slice(1)[j]
+          );
+        }
       }
     }
     setA(artic);

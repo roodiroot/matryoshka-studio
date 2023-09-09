@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { blockUp } from "@/transition-variants";
 import InteriorContainer from "@/components/interior-container";
 import PatternContainer from "@/components/pattern-container";
-import { useBlogStore } from "@/hooks/blog-store";
 import NextBlog from "../../about-page/components/next-blog";
+import { useWorkStore } from "@/hooks/work-store";
 
 const MoreProjects = () => {
-  const { articles } = useBlogStore();
+  const { projectsTest } = useWorkStore();
+
   return (
     <PatternContainer>
       <InteriorContainer>
@@ -31,14 +32,20 @@ const MoreProjects = () => {
       <InteriorContainer className='mt-16'>
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <div className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2'>
-            {articles.slice(-2).map((i) => (
-              <NextBlog
-                key={i.id}
-                title={i.title}
-                description={i.description}
-                date={i.date}
-              />
-            ))}
+            {projectsTest &&
+              projectsTest
+                .slice(-2)
+                .map((i) => (
+                  <NextBlog
+                    key={i.id}
+                    title={i.title}
+                    description={i.description}
+                    date={
+                      i.infoProject.filter((l) => l.title === "Дата")[0]
+                        ?.description
+                    }
+                  />
+                ))}
           </div>
         </div>
       </InteriorContainer>

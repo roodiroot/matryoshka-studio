@@ -9,12 +9,15 @@ import Button from "@/components/ui/button";
 
 interface PortfolioItemProps {
   name: string;
-  year: string;
+  year: any;
   teme: string;
   title: string;
   description: string;
   company: string;
-  feedback: { name: string; job_title: string; img: string; text: string };
+  review: {
+    author: { name: string; surname: string; jobTitle: string; img: string };
+    text: string;
+  };
   stack: string[];
 }
 
@@ -25,7 +28,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
   title,
   description,
   stack,
-  feedback,
+  review,
   company,
 }) => {
   return (
@@ -55,7 +58,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
             </div>
             <div className='mt-1 flex gap-x-4 sm:mt-0 lg:block'>
               <p className="line-clamp-1 text-sm tracking-tight text-neutral-950 after:ml-4 after:font-semibold after:text-neutral-300 after:content-['/'] lg:mt-2 lg:after:hidden">
-                {stack?.slice(0, 2).map((i) => (
+                {stack?.slice(0, 4).map((i) => (
                   <span key={i}>{i}, </span>
                 ))}
               </p>
@@ -75,8 +78,8 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
                 {description}
               </p>
               <p>
-                Что было сделано:{" "}
-                {stack?.slice(0, 2).map((i) => (
+                Стек технологий:{" "}
+                {stack?.slice(0, 4).map((i) => (
                   <span key={i}>{i}, </span>
                 ))}
               </p>
@@ -87,10 +90,11 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({
             <div className='pl-8 mt-12 relative before:absolute after:absolute before:bg-neutral-950 after:bg-neutral-950/10 before:left-0 before:top-0 before:h-6 before:w-px after:bottom-0 after:left-0 after:top-8 after:w-px'>
               <figure className='text-sm'>
                 <blockquote className="text-neutral-600 [&>*]:relative [&>:first-child]:before:absolute [&>:first-child]:before:right-full [&>:first-child]:before:content-['“'] [&>:last-child]:after:content-['”']">
-                  <p>{feedback?.text}</p>
+                  <p>{review?.text}</p>
                 </blockquote>
                 <figcaption className='mt-6 font-semibold text-neutral-950'>
-                  {feedback?.name}, {feedback?.job_title}
+                  {review?.author?.name} {review?.author?.surname},{" "}
+                  {review?.author?.jobTitle}
                 </figcaption>
               </figure>
             </div>

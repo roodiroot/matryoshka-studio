@@ -11,6 +11,12 @@ const nextConfig = {
         port: "",
         pathname: "/_next/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.borisovportfolio.ru",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

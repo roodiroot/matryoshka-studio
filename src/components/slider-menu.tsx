@@ -1,7 +1,7 @@
 "use client";
 import { useSliderMenu } from "@/hooks/slider-menu-store";
 
-import Logo from "@/components/ui/logo";
+import LogoM from "@/components/ui/logoM";
 import Burger from "@/components/ui/burger";
 import Button from "./ui/button";
 import LinkMenu from "./link-menu";
@@ -21,9 +21,20 @@ const SliderMenu = () => {
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <div className='mx-auto max-w-2xl lg:max-w-none'>
             <div className='flex items-center justify-between'>
-              <Logo fill='fill-white' />
+              <LogoM fill='fill-white' />
               <div className='flex items-center gap-x-8'>
-                <Button to='/contacts' label='Связаться с нами' type='white' />
+                <Button
+                  to='/contacts'
+                  label='Связаться с нами'
+                  type='white'
+                  className='hidden sm:block'
+                />
+                <Button
+                  to='/contacts'
+                  label='Связь'
+                  type='white'
+                  className='sm:hidden'
+                />
                 <Burger onClick={onClose} className='w-6 h-6' x />
               </div>
             </div>

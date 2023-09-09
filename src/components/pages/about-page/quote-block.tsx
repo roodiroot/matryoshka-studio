@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { blockUp } from "@/transition-variants";
@@ -9,7 +10,10 @@ import NextBlog from "./components/next-blog";
 import { useBlogStore } from "@/hooks/blog-store";
 
 const QuoteBlock = () => {
-  const { articles } = useBlogStore();
+  const { testArticles, fetchArticles } = useBlogStore();
+  useEffect(() => {
+    fetchArticles();
+  }, []);
   return (
     <PatternContainer className='mt-24 sm:mt-32 lg:mt-40'>
       <InteriorContainer>
@@ -46,14 +50,17 @@ const QuoteBlock = () => {
       <InteriorContainer className='mt-24'>
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <div className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2'>
-            {articles.slice(-2).map((i) => (
-              <NextBlog
-                key={i.id}
-                title={i.title}
-                description={i.description}
-                date={i.date}
-              />
-            ))}
+            {testArticles &&
+              testArticles
+                .slice(-2)
+                .map((i) => (
+                  <NextBlog
+                    key={i?.id}
+                    title={i?.title}
+                    description={i?.description}
+                    date={i?.createdAt}
+                  />
+                ))}
           </div>
         </div>
       </InteriorContainer>

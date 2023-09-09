@@ -1,13 +1,20 @@
 import Link from "next/link";
 
 interface ButtonProps {
-  label: string;
+  label?: string;
   type: string;
   to: string;
+  children?: any;
   onClick?: () => void;
   className?: string;
 }
-const Button: React.FC<ButtonProps> = ({ label, type, to, className = "" }) => {
+const Button: React.FC<ButtonProps> = ({
+  label,
+  type,
+  to,
+  className = "",
+  children,
+}) => {
   return (
     <Link
       href={to}
@@ -18,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({ label, type, to, className = "" }) => {
       ${className}
       `}
     >
-      <span className='relative top-px'>{label}</span>
+      {children ? children : <span className='relative top-px'>{label}</span>}
     </Link>
   );
 };

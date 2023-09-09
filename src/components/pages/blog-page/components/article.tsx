@@ -6,26 +6,17 @@ import { blockUp } from "@/transition-variants";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/button";
-
-// id: 1,
-//     title: "Будущее веб-разработки: наши прогнозы на 2023 год",
-//     description:
-//       "Давайте рассмотрим последние тенденции в веб-разработке и повторим некоторые прогнозы, которые мы прочитали в Твиттере, о том, как они будут формировать отрасль в наступающем году.",
-//     date: "6 апреля 2023 г",
-//     autor: {
-//       img: "https://studio.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fchelsea-hagon.073aa8f2.jpeg&w=1920&q=75",
-//       name: "Челси Хэгон",
-//       jobTitle: "Ведущий разработчик",
-//     },
+import { formateDate } from "@/utils";
 
 interface ArticleProps {
   name: string;
   title: string;
   description: string;
   date: string;
-  autor: {
+  author: {
     img: string;
     name: string;
+    surname: string;
     jobTitle: string;
   };
 }
@@ -35,8 +26,10 @@ const Article: React.FC<ArticleProps> = ({
   title,
   description,
   date,
-  autor,
+  author,
 }) => {
+  date = formateDate(date, true);
+
   return (
     <motion.div
       initial='offscreen'
@@ -67,13 +60,15 @@ const Article: React.FC<ArticleProps> = ({
                       decoding='async'
                       data-nimg='1'
                       className='h-12 w-12 object-cover grayscale'
-                      src={autor.img}
+                      src={process.env.NEXT_PUBLIC_API_URL + author?.img}
                       style={{ color: "transparent" }}
                     />
                   </div>
                   <div className='text-sm text-neutral-950'>
-                    <div className='font-semibold'>{autor.name}</div>
-                    <div>{autor.jobTitle}</div>
+                    <div className='font-semibold'>
+                      {author?.name} {author?.surname}
+                    </div>
+                    <div>{author?.jobTitle}</div>
                   </div>
                 </dd>
               </dl>
