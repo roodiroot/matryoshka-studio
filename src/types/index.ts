@@ -29,3 +29,17 @@ export interface Project {
   };
   achieved: { title: string; description: string }[];
 }
+
+export interface Author {
+  id: number;
+  name: string;
+  surname: string;
+  img: string;
+  jobTitle: string;
+  type: AuthorType;
+}
+
+export enum AuthorType {
+  TEAM = "TEAM",
+  CLIENT = "CLIENT",
+}

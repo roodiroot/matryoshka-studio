@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 import { blockUp } from "@/transition-variants";
 import PersonalItem from "./personal-item";
-import { mangersListType } from "../command-block";
+import { Author } from "@/types";
 
 interface PersonalListProps {
   title: string;
-  personal: mangersListType[];
+  personal: Author[];
 }
 
 const PersonalList: React.FC<PersonalListProps> = ({ title, personal }) => {
@@ -30,12 +30,15 @@ const PersonalList: React.FC<PersonalListProps> = ({ title, personal }) => {
         </motion.div>
         <div className='lg:col-span-3'>
           <ul className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8'>
-            {personal.map((i) => (
+            {personal?.map((i) => (
               <PersonalItem
-                key={i.id}
-                img={i.img}
-                name={i.name}
-                jobTitle={i.jobTitle}
+                key={i?.id}
+                id={i?.id}
+                img={i?.img}
+                name={i?.name}
+                surname={i?.surname}
+                jobTitle={i?.jobTitle}
+                type={i.type}
               />
             ))}
           </ul>
