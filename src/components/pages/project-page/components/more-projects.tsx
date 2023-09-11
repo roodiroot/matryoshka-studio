@@ -9,7 +9,13 @@ import NextBlog from "../../about-page/components/next-blog";
 import { useWorkStore } from "@/hooks/work-store";
 
 const MoreProjects = () => {
-  const { projectsTest } = useWorkStore();
+  const { projectsTest, projectSelect } = useWorkStore();
+  const arrayOutProjectSelect = projectsTest.filter(
+    (p) => p?.id !== projectSelect?.id
+  );
+  const projectNextRandom = arrayOutProjectSelect
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2);
 
   return (
     <PatternContainer>
@@ -32,20 +38,20 @@ const MoreProjects = () => {
       <InteriorContainer className='mt-16'>
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <div className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2'>
-            {projectsTest &&
-              projectsTest
-                .slice(-2)
-                .map((i) => (
-                  <NextBlog
-                    key={i.id}
-                    title={i.title}
-                    description={i.description}
-                    date={
-                      i.infoProject.filter((l) => l.title === "Дата")[0]
-                        ?.description
-                    }
-                  />
-                ))}
+            {projectNextRandom &&
+              projectNextRandom.map((i) => (
+                <NextBlog
+                  key={i.id}
+                  title={i.title}
+                  description={i.description}
+                  date={
+                    i.infoProject.filter((l) => l.title === "Дата")[0]
+                      ?.description
+                  }
+                  name={i?.name}
+                  type='work'
+                />
+              ))}
           </div>
         </div>
       </InteriorContainer>

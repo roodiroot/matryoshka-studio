@@ -9,7 +9,19 @@ import { useBlogStore } from "@/hooks/blog-store";
 import NextBlog from "../about-page/components/next-blog";
 
 const MoreArticles = () => {
-  const { testArticles } = useBlogStore();
+  const { testArticles, articleSelect } = useBlogStore();
+  let arrayOutSelectArticle;
+  if (articleSelect) {
+    arrayOutSelectArticle = testArticles?.filter(
+      (a) => a.id !== articleSelect?.id
+    );
+  } else {
+    arrayOutSelectArticle = testArticles;
+  }
+  const articlesNextRandom = arrayOutSelectArticle
+    ?.sort(() => 0.5 - Math.random())
+    .slice(0, 2);
+
   return (
     <PatternContainer>
       <InteriorContainer>
@@ -31,17 +43,17 @@ const MoreArticles = () => {
       <InteriorContainer className='mt-16'>
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <div className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2'>
-            {testArticles &&
-              testArticles
-                .slice(-2)
-                .map((i) => (
-                  <NextBlog
-                    key={i?.id}
-                    title={i?.title}
-                    description={i?.description}
-                    date={i?.createdAt}
-                  />
-                ))}
+            {articlesNextRandom &&
+              articlesNextRandom.map((i) => (
+                <NextBlog
+                  key={i?.id}
+                  title={i?.title}
+                  description={i?.description}
+                  date={i?.createdAt}
+                  name={i?.name}
+                  type='blog'
+                />
+              ))}
           </div>
         </div>
       </InteriorContainer>

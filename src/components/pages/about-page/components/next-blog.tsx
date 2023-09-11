@@ -10,12 +10,21 @@ interface NextBlogProps {
   title: string;
   date: string;
   description: string;
+  name: string;
+  type: "blog" | "work";
 }
 
-const NextBlog: React.FC<NextBlogProps> = ({ title, date, description }) => {
+const NextBlog: React.FC<NextBlogProps> = ({
+  title,
+  date,
+  description,
+  name,
+  type,
+}) => {
   if (date?.length > 16) {
     date = formateDate(date, true);
   }
+
   return (
     <motion.div
       initial='offscreen'
@@ -35,7 +44,7 @@ const NextBlog: React.FC<NextBlogProps> = ({ title, date, description }) => {
           </time>
           <p className='mt-2.5 text-base text-neutral-600'>{description}</p>
           <Link
-            href={"/"}
+            href={`/${type}/${name}`}
             className='mt-6 flex gap-x-3 text-base font-semibold text-neutral-950 transition hover:text-neutral-700'
           >
             Читать далее

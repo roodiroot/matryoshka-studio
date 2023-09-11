@@ -8,12 +8,18 @@ import InteriorContainer from "@/components/interior-container";
 import PatternContainer from "@/components/pattern-container";
 import NextBlog from "./components/next-blog";
 import { useBlogStore } from "@/hooks/blog-store";
+import { Article } from "@/types";
 
 const QuoteBlock = () => {
   const { testArticles, fetchArticles } = useBlogStore();
+  let articlesSort: [] | Article[] = [];
   useEffect(() => {
     fetchArticles();
   }, []);
+
+  if (testArticles) {
+    articlesSort = testArticles?.sort(() => 0.5 - Math.random()).slice(0, 2);
+  }
   return (
     <PatternContainer className='mt-24 sm:mt-32 lg:mt-40'>
       <InteriorContainer>
@@ -51,16 +57,16 @@ const QuoteBlock = () => {
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <div className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2'>
             {testArticles &&
-              testArticles
-                .slice(-2)
-                .map((i) => (
-                  <NextBlog
-                    key={i?.id}
-                    title={i?.title}
-                    description={i?.description}
-                    date={i?.createdAt}
-                  />
-                ))}
+              articlesSort.map((i) => (
+                <NextBlog
+                  key={i?.id}
+                  title={i?.title}
+                  description={i?.description}
+                  date={i?.createdAt}
+                  name={i?.name}
+                  type='blog'
+                />
+              ))}
           </div>
         </div>
       </InteriorContainer>

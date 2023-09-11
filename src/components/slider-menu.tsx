@@ -5,7 +5,7 @@ import LogoM from "@/components/ui/logoM";
 import Burger from "@/components/ui/burger";
 import Button from "./ui/button";
 import LinkMenu from "./link-menu";
-import { socialIcons } from "./pages/contacts-page/form-block";
+import { socialIcons } from "@/constance";
 
 const SliderMenu = () => {
   const { onClose } = useSliderMenu();
@@ -102,13 +102,14 @@ const SliderMenu = () => {
                 </h2>
                 <ul className='flex gap-x-10 text-white mt-6'>
                   {socialIcons?.map((i) => (
-                    <li key={i.label}>
+                    <li key={i?.name}>
                       <a
-                        aria-label={i.label}
+                        aria-label={i?.name}
                         className='transition hover:text-neutral-200'
-                        href={i.href}
+                        href={i?.path}
+                        target='_blank'
                       >
-                        {i.Icon}
+                        {i?.Icon}
                       </a>
                     </li>
                   ))}
