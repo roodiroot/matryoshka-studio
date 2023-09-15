@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 
 import { blockUp } from "@/transition-variants";
 import Button from "@/components/ui/button";
 import Input from "@/components/pages/contacts-page/components/input";
 import Check from "@/components/pages/contacts-page/components/check";
+import { useState } from "react";
 
 export type IFormValues = {
   name: string;
@@ -18,6 +20,7 @@ export type IFormValues = {
 };
 
 const Form = () => {
+  const [disabled, setDisabled] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -35,6 +38,7 @@ const Form = () => {
   });
 
   const onSubmit: SubmitHandler<IFormValues> = async (data: any) => {
+    setDisabled(true);
     let string = [];
     for (let block in data) {
       if (data[block]) {
@@ -43,8 +47,20 @@ const Form = () => {
     }
     const dataString = string.join().replace(/,/g, "%0A");
     const text = `<b>Форма обратной связи:</b>%0A%0A${dataString}`;
-    await fetch(`/api/order?text=${text}`);
-    reset();
+    await fetch(`/api/order?text=${text}`)
+      .then((data) => {
+        if (data.status === 200) {
+          return toast.success("Супер!!! Ожидайте звонка!!!");
+        }
+        toast.error("Ошибка попробуйте ещё раз!");
+      })
+      .catch(() => {
+        toast.error("Ошибка попробуйте ещё раз!");
+      })
+      .finally(() => {
+        reset();
+        setDisabled(false);
+      });
   };
 
   return (
@@ -125,6 +141,7 @@ const Form = () => {
         label='Давайте сделаем проект вместе'
         type='dark'
         className='mt-10'
+        disabled={disabled}
       />
     </motion.div>
   );

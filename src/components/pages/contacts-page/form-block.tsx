@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { blockUp } from "@/transition-variants";
 import ClassicContainer from "@/components/classic-container";
 import Form from "./components/form";
-import { socialIcons } from "@/constance";
+import { contactsConstante, socialIcons } from "@/constance";
 
 const FormBlock = () => {
   return (
@@ -35,20 +35,26 @@ const FormBlock = () => {
             <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2'>
               <li>
                 <address className='text-sm not-italic text-neutral-600'>
-                  <strong className='text-neutral-950'>Саранск</strong>
+                  <strong className='text-neutral-950'>Телефоны</strong>
                   <br />
-                  1 Carlsberg Gate
+                  <a href={`tel:${contactsConstante.phone.mobile2}`}>
+                    {contactsConstante.phone.mobile2change}
+                  </a>
                   <br />
-                  1260, København, Denmark
+                  <a href={`tel:${contactsConstante.phone.mobile1}`}>
+                    {contactsConstante.phone.mobile1change}
+                  </a>
                 </address>
               </li>
               <li>
                 <address className='text-sm not-italic text-neutral-600'>
-                  <strong className='text-neutral-950'>Нижний новгород</strong>
+                  <strong className='text-neutral-950'>
+                    {contactsConstante.address.city}
+                  </strong>
                   <br />
-                  1 Carlsberg Gate
+                  {contactsConstante.address.street}
                   <br />
-                  1260, København, Denmark
+                  {contactsConstante.address.office}
                 </address>
               </li>
             </ul>
@@ -62,9 +68,9 @@ const FormBlock = () => {
                   <dd>
                     <a
                       className='text-neutral-600 hover:text-neutral-950'
-                      href='mailto:careers@studioagency.com'
+                      href={`mailto:${contactsConstante.email.main}`}
                     >
-                      sales@studioagency.com
+                      {contactsConstante.email.main}
                     </a>
                   </dd>
                 </div>
@@ -73,9 +79,9 @@ const FormBlock = () => {
                   <dd>
                     <a
                       className='text-neutral-600 hover:text-neutral-950'
-                      href='mailto:careers@studioagency.com'
+                      href={`mailto:${contactsConstante.email.career}`}
                     >
-                      careers@studioagency.com
+                      {contactsConstante.email.career}
                     </a>
                   </dd>
                 </div>

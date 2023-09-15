@@ -5,7 +5,7 @@ import LogoM from "@/components/ui/logoM";
 import Burger from "@/components/ui/burger";
 import Button from "./ui/button";
 import LinkMenu from "./link-menu";
-import { socialIcons } from "@/constance";
+import { contactsConstante, socialIcons } from "@/constance";
 
 const SliderMenu = () => {
   const { onClose } = useSliderMenu();
@@ -80,18 +80,26 @@ const SliderMenu = () => {
                     <div className='text-sm not-italic text-neutral-300'>
                       <strong className='text-white'>Телефоны</strong>
                       <br />
-                      <a href='tel:899999999'>+7 (495) 240-04-40</a>
+                      <a href={`tel:${contactsConstante.phone.mobile2}`}>
+                        {contactsConstante.phone.mobile2change}
+                      </a>
                       <br />
-                      <a href='tel:899999999'>+7 (987) 010-04-40</a>
+                      <a href={`tel:${contactsConstante.phone.mobile1}`}>
+                        {contactsConstante.phone.mobile1change}
+                      </a>
                     </div>
                   </li>
                   <li>
                     <div className='text-sm not-italic text-neutral-300'>
                       <strong className='text-white'>Почты</strong>
                       <br />
-                      <a href='mailto:example@mail.ru'>example@mail.ru</a>
+                      <a href={`mailto:${contactsConstante.email.main}`}>
+                        {contactsConstante.email.main}
+                      </a>
                       <br />
-                      <a href='mailto:example@mail.ru'>example@mail.ru</a>
+                      <a href={`mailto:${contactsConstante.email.career}`}>
+                        {contactsConstante.email.career}
+                      </a>
                     </div>
                   </li>
                 </ul>

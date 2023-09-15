@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
+
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "react-toastify";
 
 interface InputFooterSendEmailProps {
   className?: string;
@@ -11,6 +16,7 @@ type Inputs = {
 const InputFooterSendEmail: React.FC<InputFooterSendEmailProps> = ({
   className = "",
 }) => {
+  const [disabled, setDisabled] = useState(false);
   const {
     register,
     handleSubmit,
@@ -23,8 +29,22 @@ const InputFooterSendEmail: React.FC<InputFooterSendEmailProps> = ({
   });
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    setDisabled(true);
     const text = `<b>Новая подписка на рассылку:</b>%0A<i>${data.email}</i>`;
-    await fetch(`/api/order?text=${text}`);
+    await fetch(`/api/order?text=${text}`)
+      .then((data) => {
+        if (data.status === 200) {
+          return toast.success("Спасибо за подписку!");
+        }
+        toast.error("Ошибка попробуйте ещё раз!");
+      })
+      .catch(() => {
+        toast.error("Ошибка попробуйте ещё раз!");
+      })
+      .finally(() => {
+        reset();
+        setDisabled(false);
+      });
     reset();
   };
 
@@ -48,7 +68,8 @@ const InputFooterSendEmail: React.FC<InputFooterSendEmailProps> = ({
       <div className='absolute inset-y-1 right-1 flex justify-end'>
         <button
           onClick={handleSubmit(onSubmit)}
-          className='flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800'
+          className='flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800 disabled:bg-neutral-800'
+          disabled={disabled}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'
