@@ -6,7 +6,6 @@ import styles from "./styles.module.css";
 
 const Applique = () => {
   const addConstance = (e: any) => {
-    console.log("move");
     Object.assign(document.documentElement, {
       style: `
           --move-y: ${-(e.clientX - window.innerWidth / 2) * 0.005}deg;
@@ -31,8 +30,8 @@ const Applique = () => {
           className={classNames(styles.layers_item, styles.laye_2)}
           style={{ backgroundImage: "url('img/demo/glow.png')" }}
         ></div>
-        <div className='layers_item laye-canvas'>
-          <canvas className='rain'></canvas>
+        <div className="layers_item laye-canvas">
+          <canvas className="rain"></canvas>
         </div>
         <div
           className={classNames(styles.layers_item, styles.laye_3)}

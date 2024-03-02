@@ -1,5 +1,6 @@
 .layers {
   position: relative;
+  
   z-index: 2;
   perspective: 1800px;
   overflow: hidden;
@@ -14,7 +15,10 @@
 }
 .layers_item {
   position: absolute;
-  inset: -4vw;
+  top: -4vw;
+  bottom: -4vw;
+  left: -4vw;
+  right: -4vw;
   background-size: cover;
   background-position: center;
 }
@@ -41,4 +45,23 @@
 }
 .laye_7 {
   transform: translateZ(260px) scale(0.8);
+}
+
+@media (max-width: 1000px) {
+  .layers_item {
+    /* left: -4vw; */
+    right: -34vw;
+}
+@media (max-width: 600px) {
+  .layers_item {
+    right: -74vw;
+    bottom: -10vw;
+  }
+}
+}
+@media (max-width: 400px) {
+  .layers_item {
+    right: -120vw;
+    bottom: -20vw;
+  }
 }
