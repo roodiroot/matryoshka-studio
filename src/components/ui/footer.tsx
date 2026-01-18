@@ -25,7 +25,9 @@ const Footer = () => {
           </div>
           <div className="mb-20 mt-24 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-neutral-950/10 pt-12">
             <LogoButtons className="[&>*]:fill-gray-950" />
-            <p className="text-sm text-neutral-700">© Matryoshka Inc., 2023</p>
+            <p className="text-sm text-neutral-700">
+              © Matryoshka Inc., {new Date().getFullYear()}
+            </p>
           </div>
         </motion.div>
       </motion.div>
